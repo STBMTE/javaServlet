@@ -45,15 +45,6 @@
                     <li class="inline-flex">
                         <i data-feather="folder" class="red icon"></i>
                         <a href="?path=${directory.file.getAbsolutePath()}" class="ml2">${directory.file.getName()}/</a>
-                    </li>
-                </c:forEach>
-            </ul>
-        </li>
-        <li class="pa2">
-            <span class="b">Size</span>
-            <ul class="flex-column flex ma0 pa0">
-                <c:forEach var="directory" items="${directories}">
-                    <li class="inline-flex">
                         <span>${directory.length} байт</span>
                     </li>
                 </c:forEach>
@@ -67,17 +58,10 @@
                 <c:forEach var="file" items="${files}">
                     <li class="inline-flex">
                         <i data-feather="file" class="yellow icon"></i>
-                        <a href="?path=${file.file.getAbsolutePath()}" class="ml2">${file.file.getName()}</a>
-                    </li>
-                </c:forEach>
-            </ul>
-        </li>
-        <li class="pa2">
-            <span class="b">Size</span>
-            <ul class="flex-column flex ma0 pa0">
-                <c:forEach var="file" items="${files}">
-                    <li class="inline-flex">
-                        <span class="ml2">${file.length} байт</span>
+                        <div>
+                            <a href="?path=${file.file.getAbsolutePath()}" class="ml2">${file.file.getName()}</a>
+                            <span class="ml2">${file.length} байт</span>
+                        </div>
                     </li>
                 </c:forEach>
             </ul>
