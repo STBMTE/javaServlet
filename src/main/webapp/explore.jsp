@@ -36,6 +36,7 @@
     <div class="inline-flex ml2">
         <i data-feather="arrow-up-circle" class="icon"></i>
         <a class="ml2" href="?path=${path.substring(0, path.lastIndexOf("\\") + (path.lastIndexOf("\\") != path.indexOf("\\") ? 0 : 1))}">Up</a><br>
+        <a href="./logout">Выйти</a>
     </div>
     <ul class="flex-row w-100 ma0 pa0">
         <li class="pa2">
@@ -67,7 +68,6 @@
             </ul>
         </li>
     </ul>
-
 </div>
 </body>
 <script src="https://unpkg.com/feather-icons"></script>
