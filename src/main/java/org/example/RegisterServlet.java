@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.service.UserService;
+import org.example.model.UserModel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +19,7 @@ public class RegisterServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("register.jsp");
         requestDispatcher.forward(req, resp);
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
@@ -26,14 +27,13 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (login != null && password != null && email != null) {
-            UserService user = new UserService(login,password,email);
-            if(localdatabase.userRepository.addUser(user)){
+            UserModel user = new UserModel(login, password, email);
+            if (localdatabase.userRepository.addUser(user)) {
                 resp.addCookie(new Cookie("login", user.getLogin()));
                 resp.addCookie(new Cookie("email", user.getEmail()));
                 resp.addCookie(new Cookie("password", user.getPassword()));
                 resp.sendRedirect("./");
-            }
-            else{
+            } else {
                 resp.sendRedirect("./register");
             }
         }

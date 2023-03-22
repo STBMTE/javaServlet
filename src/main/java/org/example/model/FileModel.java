@@ -1,12 +1,13 @@
-package org.example.service;
+package org.example.model;
 
 import java.io.File;
 
-public class FileService {
-    public FileService(File file, long length){
+public class FileModel {
+    public FileModel(File file, long length) {
         this.file = file;
         this.length = length;
     }
+
     private final File file;
     private final long length;
 

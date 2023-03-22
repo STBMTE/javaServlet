@@ -1,46 +1,45 @@
 package org.example.repository;
 
-import org.example.service.UserService;
+import org.example.model.UserModel;
 
 import javax.servlet.http.Cookie;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserRepository {
-    private final Map<String, UserService> users = new HashMap<>();
+    private final Map<String, UserModel> users = new HashMap<>();
 
-    public UserService getUserByLogin(String login){
+    public UserModel getUserByLogin(String login) {
         return users.get(login);
     }
-    public boolean addUser(UserService user){
+
+    public boolean addUser(UserModel user) {
         String login = user.getLogin();
-        if(users.containsKey(login)){
+        if (users.containsKey(login)) {
             return false;
-        }
-        else{
+        } else {
             users.put(login, user);
             return true;
         }
     }
-    public UserService getUserFromCookie(Cookie[] cookies){
-        UserService user = null;
+
+    public UserModel getUserFromCookie(Cookie[] cookies) {
+        UserModel user = null;
         String login = null;
         String email = null;
         String password = null;
-        if(cookies !=null) {
-            for(Cookie cookie: cookies) {
-                if("login".equals(cookie.getName())) {
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("login".equals(cookie.getName())) {
                     login = cookie.getValue();
-                }
-                else if("email".equals(cookie.getName())) {
+                } else if ("email".equals(cookie.getName())) {
                     email = cookie.getValue();
-                }
-                else if("password".equals(cookie.getName())) {
+                } else if ("password".equals(cookie.getName())) {
                     password = cookie.getValue();
                 }
             }
-            if(login != null && email != null && password != null){
-                user = new UserService(login,password,email);
+            if (login != null && email != null && password != null) {
+                user = new UserModel(login, password, email);
             }
         }
         return user;
