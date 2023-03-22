@@ -1,9 +1,16 @@
 package org.example.model;
 
+
+import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
+
+@Entity
+@Table(name = "users")
 public class UserModel {
-    private final String login;
-    private final String password;
-    private final String email;
+    private Integer idUsers;
+    private String login;
+    private String password;
+    private String email;
 
     public UserModel(String login, String password, String email) {
         this.login = login;
@@ -11,15 +18,41 @@ public class UserModel {
         this.email = email;
     }
 
+    public UserModel() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getIdUsers() {
+        return this.idUsers;
+    }
+
+    public void setIdUsers(Integer value) {
+        this.idUsers = value;
+    }
+
+    @NaturalId
     public String getLogin() {
-        return login;
+        return this.login;
+    }
+
+    public void setLogin(String value) {
+        this.login = value;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
+    }
+
+    public void setPassword(String value) {
+        this.password = value;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
+    }
+
+    public void setEmail(String value) {
+        this.email = value;
     }
 }
