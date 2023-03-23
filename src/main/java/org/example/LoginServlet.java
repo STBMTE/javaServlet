@@ -16,8 +16,13 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("login.jsp");
-        requestDispatcher.forward(req, resp);
+        UserModel user = localdatabase.userRepository.getUserFromCookie(req.getCookies());
+        if (user != null) {
+            resp.sendRedirect("/");
+        } else {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("login.jsp");
+            requestDispatcher.forward(req, resp);
+        }
     }
 
     @Override

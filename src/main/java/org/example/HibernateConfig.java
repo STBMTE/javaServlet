@@ -13,7 +13,6 @@ public class HibernateConfig {
             Configuration config = new Configuration();
             config.configure();
             sessionFactory = config.buildSessionFactory();
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

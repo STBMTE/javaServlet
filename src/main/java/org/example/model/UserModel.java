@@ -1,6 +1,5 @@
 package org.example.model;
 
-
 import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
