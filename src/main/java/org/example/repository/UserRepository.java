@@ -8,7 +8,7 @@ import javax.servlet.http.Cookie;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserRepository {
+public class UserRepository implements UserReposit {
     private final Map<String, UserModel> users = new HashMap<>();
 
     public boolean addUser(UserModel user) {
